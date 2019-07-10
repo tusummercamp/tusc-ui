@@ -17,8 +17,20 @@ function setTempUrl(url: string): AnyAction {
   return { type: settingConstants.TEMP, tempUrl: url }
 }
 
+function setTimeRange(timeRange: number): AnyAction {
+  localStorage.setItem('timeRange', timeRange.toString())
+  return { type: settingConstants.TIME_RANGE, timeRange }
+}
+
+function setRefresh(refresh: number): AnyAction {
+  localStorage.setItem('refresh', refresh.toString())
+  return { type: settingConstants.REFRESH, refresh }
+}
+
 export const settingActions = {
   setSpeedUrl,
   setOdoUrl,
   setTempUrl,
+  setTimeRange,
+  setRefresh,
 }
