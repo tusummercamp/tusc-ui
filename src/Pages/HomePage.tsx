@@ -2,9 +2,10 @@ import React, { ChangeEvent } from 'react'
 import { connect, DispatchProp } from 'react-redux'
 import { Page, } from '../_components/Page'
 import { AppState } from '../_reducers';
-import { Form, InputOnChangeData } from 'semantic-ui-react';
+import { Form, InputOnChangeData, Segment, Grid } from 'semantic-ui-react';
 import { settingActions } from '../_actions/setting.actions';
 import { dataActions } from '../_actions/data.actions';
+import DataChart from './DataChart';
 
 type Props = DispatchProp & {
   timeRange: number,
@@ -81,6 +82,33 @@ class HomePage extends React.PureComponent<Props> {
               max='60' />
           </Form.Group>
         </Form>
+
+        <Grid>
+          <Grid.Row>
+            <Grid.Column width={8}>
+              <Segment>
+                <DataChart />
+              </Segment>
+            </Grid.Column>
+            <Grid.Column width={8}>
+              <Segment>
+                <DataChart />
+              </Segment>
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column width={8}>
+              <Segment>
+                <DataChart />
+              </Segment>
+            </Grid.Column>
+            <Grid.Column width={8}>
+              <Segment>
+                <DataChart />
+              </Segment>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
 
       </Page>
     )
