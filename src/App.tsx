@@ -1,6 +1,6 @@
 import './App.less';
 import React from 'react';
-import { HashRouter, Redirect, Route, Switch } from 'react-router-dom'
+import { Redirect, Route, Switch, Router } from 'react-router-dom'
 import { DispatchProp, connect } from 'react-redux';
 
 import { history } from './_helpers/history'
@@ -22,7 +22,7 @@ class App extends React.PureComponent<Props> {
   }
 
   render() {
-    return <HashRouter>
+    return <Router history={history}>
       <div>
         <Switch>
           <Route exact path="/" component={HomePage} />
@@ -30,7 +30,7 @@ class App extends React.PureComponent<Props> {
           <Redirect to="/"/>
         </Switch>
       </div>
-    </HashRouter>
+    </Router>
   }
 }
 

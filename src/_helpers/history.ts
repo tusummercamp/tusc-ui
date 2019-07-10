@@ -1,3 +1,3 @@
-import { createHashHistory } from 'history'
-const hashHistory = createHashHistory({})
-export { hashHistory as history }
+import { createBrowserHistory } from 'history'
+const browserHistory = createBrowserHistory({})
+export { browserHistory as history }
