@@ -1,26 +1,37 @@
+import './App.less';
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { HashRouter, Redirect, Route, Switch } from 'react-router-dom'
+import { DispatchProp, connect } from 'react-redux';
 
-const App: React.FC = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { history } from './_helpers/history'
+import { alertActions } from './_actions/alert.actions'
+import HomePage from './Pages/HomePage';
+import SettingsPage from './Pages/SettingsPage';
+
+
+type Props = DispatchProp & {
+
 }
 
-export default App;
+class App extends React.PureComponent<Props> {
+
+  componentDidMount() {
+    history.listen((location, action) => {
+      this.props.dispatch(alertActions.clear())
+    })
+  }
+
+  render() {
+    return <HashRouter>
+      <div>
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/settings" component={SettingsPage} />
+          <Redirect to="/"/>
+        </Switch>
+      </div>
+    </HashRouter>
+  }
+}
+
+export default connect()(App);
