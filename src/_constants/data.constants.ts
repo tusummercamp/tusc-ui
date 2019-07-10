@@ -1,5 +1,5 @@
 export const dataConstants = {
   SPEED: 'DATA_SPEED',
-  RPM: 'DATA_RPM',
+  ODO: 'DATA_ODO',
   TEMP: 'DATA_TEMP',
 }

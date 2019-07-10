@@ -8,11 +8,11 @@ type Item = {
 
 type State = {
   speed: Array<Item>,
-  rpm: Array<Item>,
+  odo: Array<Item>,
   temp: Array<Item>,
 }
 
-const initialState: State = { speed: [], rpm: [], temp: [], }
+const initialState: State = { speed: [], odo: [], temp: [], }
 
 export default function data(state: State = initialState, action: AnyAction) {
 
@@ -21,11 +21,11 @@ export default function data(state: State = initialState, action: AnyAction) {
     case dataConstants.SPEED:
       return { ...state, speed: action.speed }
 
-    case dataConstants.RPM:
-      return { ...state, rpm: action.rpm }
+    case dataConstants.ODO:
+      return { ...state, odo: action.odo }
 
     case dataConstants.TEMP:
-      return { ...state, temp: action.rpm }
+      return { ...state, temp: action.temp }
 
     default:
       return state
