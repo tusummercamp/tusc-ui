@@ -2,4 +2,6 @@ export const settingConstants = {
   SPEED: 'SETTING_SPEED',
   ODO: 'SETTING_ODO',
   TEMP: 'SETTING_TEMP',
+  REFRESH: 'SETTING_REFRESH',
+  TIME_RANGE: 'SETTING_TIME_RANGE',
 }
