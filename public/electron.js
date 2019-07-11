@@ -5,7 +5,7 @@ nconf.env().defaults({
   SPEED_URL: 'https://32mo5c9zs2.execute-api.us-east-1.amazonaws.com/Prod/data',
   TEMP_URL: 'https://i90jji9q5j.execute-api.us-east-1.amazonaws.com/Prod/data',
   ODO_URL: 'https://g9eyv3jby5.execute-api.us-east-1.amazonaws.com/Prod/data',
-  TIME_RANGE: 3600000,
+  TIME_RANGE: 60000,
   REFRESH: 5000,
 })
 

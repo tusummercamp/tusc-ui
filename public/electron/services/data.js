@@ -13,14 +13,17 @@ module.exports = function(renderer) {
     if ( lastRequest < now - refresh ) {
       const to = Math.floor(now / 1000)
       const from = to - Math.floor(timeRange / 1000)
-      updateData('data.speed', speedUrl, from, to)
-      updateData('data.odo', odoUrl, from, to)
-      updateData('data.temp', tempUrl, from, to)
+      // updateData('data.speed', speedUrl, from, to)
+      // updateData('data.odo', odoUrl, from, to)
+      // updateData('data.temp', tempUrl, from, to)
+      updateFakeData('data.speed', speedUrl, from, to)
+      updateFakeData('data.odo', odoUrl, from, to)
+      updateFakeData('data.temp', tempUrl, from, to)
       lastRequest = now
     }
   }
 
-  // async
+  // event
   async function updateData(topic, url, from, to) {
     try {
       const response = await axios.get(`${url}?from=${from}&to=${to}`)
@@ -28,6 +31,17 @@ module.exports = function(renderer) {
     } catch (err) {
       logger.error(err.response ? JSON.stringify(err.response.data) : err.message)
     }
+  }
+
+  // event
+  async function updateFakeData(topic, url, from, to) {
+    const data = []
+    let current = from
+    while (current < to) {
+      data.push({ time: current, value: Math.random() * 50 })
+      current++
+    }
+    renderer.webContents.send(topic, data)
   }
 
 }
