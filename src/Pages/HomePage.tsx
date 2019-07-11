@@ -14,45 +14,20 @@ type Props = DispatchProp & {
 
 class HomePage extends React.PureComponent<Props> {
 
-  autoRefreshInterval: any = 0
-
   componentDidMount() {
-    this.autoRefreshInterval = setInterval(this.refreshData.bind(this), this.props.refresh)
-    this.refreshData()
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.autoRefreshInterval)
-  }
-
-  refreshData() {
-    const { dispatch, timeRange } = this.props
-    const to = Math.floor(Date.now() / 1000)
-    const from = to - Math.floor(timeRange / 1000)
-    dispatch(dataActions.getSpeed(from, to))
-    dispatch(dataActions.getOdo(from, to))
-    dispatch(dataActions.getTemp(from, to))
+    dataActions.init()
   }
 
   onChange(e: ChangeEvent, data: InputOnChangeData) {
-
     const { dispatch } = this.props
-
     switch (data.name) {
-
       case 'refresh':
-        const value = parseInt(data.value) * 1000
-        dispatch(settingActions.setRefresh(value))
-        clearInterval(this.autoRefreshInterval)
-        this.autoRefreshInterval = setInterval(this.refreshData.bind(this), value)
+        dispatch(settingActions.setRefresh(parseInt(data.value) * 1000))
         break
-
       case 'timeRange':
           dispatch(settingActions.setTimeRange(parseInt(data.value) * 1000 * 3600))
         break
-
     }
-
   }
 
   render() {

@@ -1,29 +1,29 @@
-
 import { settingConstants } from '../_constants/setting.constants'
 import { AnyAction } from 'redux'
+import { ipcRenderer } from 'electron'
 
 function setSpeedUrl(url: string): AnyAction {
-  localStorage.setItem('speedUrl', url)
+  ipcRenderer.send('settings.speedUrl.set', url)
   return { type: settingConstants.SPEED, speedUrl: url }
 }
 
 function setOdoUrl(url: string): AnyAction {
-  localStorage.setItem('odoUrl', url)
+  ipcRenderer.send('settings.odoUrl.set', url)
   return { type: settingConstants.ODO, odoUrl: url }
 }
 
 function setTempUrl(url: string): AnyAction {
-  localStorage.setItem('tempUrl', url)
+  ipcRenderer.send('settings.tempUrl.set', url)
   return { type: settingConstants.TEMP, tempUrl: url }
 }
 
 function setTimeRange(timeRange: number): AnyAction {
-  localStorage.setItem('timeRange', timeRange.toString())
+  ipcRenderer.send('settings.timeRange.set', timeRange)
   return { type: settingConstants.TIME_RANGE, timeRange }
 }
 
 function setRefresh(refresh: number): AnyAction {
-  localStorage.setItem('refresh', refresh.toString())
+  ipcRenderer.send('settings.refresh.set', refresh)
   return { type: settingConstants.REFRESH, refresh }
 }
 

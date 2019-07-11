@@ -18,13 +18,13 @@ export default function data(state: State = initialState, action: AnyAction) {
 
   switch (action.type) {
 
-    case dataConstants.SPEED_SUCCESS:
+    case dataConstants.SPEED:
       return { ...state, speed: action.speed }
 
-    case dataConstants.ODO_SUCCESS:
+    case dataConstants.ODO:
       return { ...state, odo: action.odo }
 
-    case dataConstants.TEMP_SUCCESS:
+    case dataConstants.TEMP:
       return { ...state, temp: action.temp }
 
     default:
