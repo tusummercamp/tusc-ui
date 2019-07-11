@@ -1,5 +1,6 @@
 import { settingConstants } from  '../_constants/setting.constants'
 import { AnyAction } from 'redux';
+import { ipcRenderer } from 'electron'
 
 type State = {
   speedUrl: string,
@@ -10,11 +11,11 @@ type State = {
 }
 
 const initialState: State = {
-  speedUrl: localStorage.getItem('speedUrl') || 'https://upn8o73jw8.execute-api.us-east-1.amazonaws.com/Prod/data',
-  tempUrl: localStorage.getItem('tempUrl') || 'https://i90jji9q5j.execute-api.us-east-1.amazonaws.com/Prod/data',
-  odoUrl: localStorage.getItem('odoUrl') || 'https://g9eyv3jby5.execute-api.us-east-1.amazonaws.com/Prod/data',
-  timeRange: parseInt(localStorage.getItem('timeRange') || '3600000'),
-  refresh: parseInt(localStorage.getItem('refresh') || '5000'),
+  speedUrl: ipcRenderer.sendSync('settings.speedUrl.get'),
+  tempUrl: ipcRenderer.sendSync('settings.tempUrl.get'),
+  odoUrl: ipcRenderer.sendSync('settings.odoUrl.get'),
+  timeRange: ipcRenderer.sendSync('settings.timeRange.get'),
+  refresh: ipcRenderer.sendSync('settings.refresh.get'),
 }
 
 export default function settings(state: State = initialState, action: AnyAction) {
