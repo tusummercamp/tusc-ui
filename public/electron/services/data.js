@@ -13,12 +13,9 @@ module.exports = function(renderer) {
     if ( lastRequest < now - refresh ) {
       const to = Math.floor(now / 1000)
       const from = to - Math.floor(timeRange / 1000)
-      // updateData('data.speed', speedUrl, from, to)
-      // updateData('data.odo', odoUrl, from, to)
-      // updateData('data.temp', tempUrl, from, to)
-      updateFakeData('data.speed', speedUrl, from, to)
-      updateFakeData('data.odo', odoUrl, from, to)
-      updateFakeData('data.temp', tempUrl, from, to)
+      updateData('data.speed', speedUrl, from, to)
+      updateData('data.odo', odoUrl, from, to)
+      updateData('data.temp', tempUrl, from, to)
       lastRequest = now
     }
   }
