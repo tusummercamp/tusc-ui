@@ -97,24 +97,24 @@ class HomePage extends React.PureComponent<Props> {
           <Grid.Row>
             <Grid.Column width={8}>
               <Segment>
-                <DataChart data={speedData} />
+                <DataChart title='Speed' data={speedData} />
               </Segment>
             </Grid.Column>
             <Grid.Column width={8}>
               <Segment>
-                <DataChart data={ododData} />
+                <DataChart title='Odometer' data={ododData} />
               </Segment>
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
             <Grid.Column width={8}>
               <Segment>
-                <DataChart data={tempdData} />
+                <DataChart title='Temperature' data={tempdData} />
               </Segment>
             </Grid.Column>
             <Grid.Column width={8}>
               <Segment>
-                <DataChart data={[]} />
+                <DataChart title='HTTP Latency' data={[]} />
               </Segment>
             </Grid.Column>
           </Grid.Row>
